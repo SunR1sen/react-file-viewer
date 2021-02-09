@@ -20,17 +20,12 @@
   "author": "PlanGrid <opensource@plangrid.com>",
   "contributors": [
     {
-      "name": "Alexei Schiopu",
-      "email": "alexxschiopu@gmail.com",
-      "url": "http://schiopu.me"
+      "name": "Dmitry Boldyr",
+      "email": "d.boldyr@onlystudio.org"
     },
     {
-      "name": "Aaron Norby",
-      "email": "aaron.norby@gmail.com"
-    },
-    {
-      "name": "Viktoriya Savkina",
-      "email": "viktoriya.savkina@gmail.com"
+      "name": "Ivan Bobrenko",
+      "email": "i.bobrenko@onlystudio.org"
     }
   ],
   "license": "MIT",
@@ -68,6 +63,7 @@
     "jest": "^23.6.0",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.5",
+    "prettier": "^2.2.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-test-renderer": "^16.6.3",
