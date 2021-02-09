@@ -14,7 +14,8 @@
     "react/no-did-mount-set-state": [0],
     "quotes": ["error", "double"],
     "class-methods-use-this": "off",
-    "react/no-danger": "off"
+    "react/no-danger": "off",
+    "react/jsx-filename-extension": "off"
   },
   "extends": "airbnb",
   "globals": {
