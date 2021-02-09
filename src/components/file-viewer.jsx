@@ -34,11 +34,10 @@ class FileViewer extends Component {
 
   getDriver() {
     switch (this.props.fileType) {
-      case 'csv': {
-        return withFetching(CsvViewer, this.props);
-      }
-      case 'xlsx': {
-        const newProps = Object.assign({}, this.props, { responseType: 'arraybuffer' });
+      case "xlsx": {
+        const newProps = Object.assign({}, this.props, {
+          responseType: "arraybuffer",
+        });
         return withFetching(XlsxViewer, newProps);
       }
       case 'jpg':
