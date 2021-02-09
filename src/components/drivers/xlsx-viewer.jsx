@@ -1,9 +1,8 @@
 // Copyright (c) 2017 PlanGrid, Inc.
 
-import React, { Component } from 'react';
-import XLSX from 'xlsx';
-
-import CsvViewer from './csv-viewer';
+import React, { Component } from "react";
+import XLSX from "xlsx";
+import "../../styles/xslx-table.scss";
 
 class XlxsViewer extends Component {
   constructor(props) {
@@ -19,11 +18,16 @@ class XlxsViewer extends Component {
       arr.push(String.fromCharCode(dataArr[i]));
     }
 
-    const workbook = XLSX.read(arr.join(''), { type: 'binary' });
-    const names = Object.keys(workbook.Sheets);
-    const sheets = names.map(name => (
-      XLSX.utils.sheet_to_csv(workbook.Sheets[name])
-    ));
+    const parser = new window.DOMParser();
+    const workbook = XLSX.read(arr.join(""), {
+      type: "binary",
+      cellDates: true,
+    });
+    const names = workbook.SheetNames;
+    const sheets = names.map((name) => {
+      const sheet = XLSX.utils.sheet_to_html(workbook.Sheets[name]);
+      return parser.parseFromString(sheet, "text/html").body.innerHTML;
+    });
 
     return { sheets, names, curSheetIndex: 0 };
   }
@@ -40,17 +44,17 @@ class XlxsViewer extends Component {
       />
     ));
 
-    return (
-      <div className="sheet-names">
-        {sheets}
-      </div>
-    );
+    return <div className="sheet-names">{sheets}</div>;
   }
 
   renderSheetData(sheet) {
-    const csvProps = Object.assign({}, this.props, { data: sheet });
     return (
-      <CsvViewer {...csvProps} />
+      <div
+        className="xlsx-container"
+        dangerouslySetInnerHTML={{
+          __html: sheet,
+        }}
+      />
     );
   }
 
