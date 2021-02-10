@@ -18,7 +18,8 @@
     "react/no-danger": "off",
     "react/jsx-filename-extension": "off",
     "arrow-parens": "warn",
-    "curly": "warn"
+    "curly": "warn",
+    "import/prefer-default-export": "off"
   },
   "extends": "airbnb",
   "globals": {

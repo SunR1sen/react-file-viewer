@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import XLSX from "xlsx";
 import "../../styles/xslx-table.scss";
+import { formatDate } from "../../utils/helper";
 
 class XlxsViewer extends Component {
   constructor(props) {
@@ -25,8 +26,17 @@ class XlxsViewer extends Component {
     });
     const names = workbook.SheetNames;
     const sheets = names.map((name) => {
-      console.log(name);
-      const sheet = XLSX.utils.sheet_to_html(workbook.Sheets[name]);
+      const currentSheet = workbook.Sheets[name];
+      const keys = Object.keys(currentSheet);
+
+      keys.forEach((key) => {
+        const cellData = currentSheet[key];
+        if (cellData.t === "d" && cellData.w.match(/\d{2}\//g)) {
+          cellData.w = formatDate(cellData.w);
+        }
+      });
+
+      const sheet = XLSX.utils.sheet_to_html(currentSheet);
       return parser.parseFromString(sheet, "text/html").body.innerHTML;
     });
 
