@@ -12,10 +12,13 @@
     "max-len": [0],
     "react/no-unused-prop-types": [0],
     "react/no-did-mount-set-state": [0],
-    "quotes": ["error", "double"],
+    "comma-dangle": "warn",
+    "quotes": ["warn", "double"],
     "class-methods-use-this": "off",
     "react/no-danger": "off",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "arrow-parens": "warn",
+    "curly": "warn"
   },
   "extends": "airbnb",
   "globals": {
