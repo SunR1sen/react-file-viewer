@@ -1,9 +1,9 @@
 // Copyright (c) 2017 PlanGrid, Inc.
 
-import React, { Component } from 'react';
-import XViewer from '../../utils/xbim-viewer.debug.bundle';
+import React, { Component } from "react";
+import XViewer from "../../utils/xbim-viewer.debug.bundle";
 
-import Error from '../error';
+import Error from "../error";
 
 export default class XBimViewer extends Component {
   // TODO check for webgl compatibility
@@ -14,7 +14,7 @@ export default class XBimViewer extends Component {
 
   componentDidMount() {
     try {
-      const viewer = new XViewer('xbim-viewer');
+      const viewer = new XViewer("xbim-viewer");
       viewer.load(this.props.filePath);
       viewer.start();
     } catch (e) {
@@ -31,7 +31,7 @@ export default class XBimViewer extends Component {
     }
 
     return (
-      <div className="pg-driver-view" >
+      <div className="pg-driver-view">
         <canvas id="xbim-viewer" />
       </div>
     );

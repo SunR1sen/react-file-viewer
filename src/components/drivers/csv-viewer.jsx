@@ -49,7 +49,7 @@ class CsvViewer extends Component {
       <ReactDataGrid
         columns={columns}
         rowsCount={rows.length}
-        rowGetter={i => rows[i]}
+        rowGetter={(i) => rows[i]}
         minHeight={this.props.height || 650}
       />
     );

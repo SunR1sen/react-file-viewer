@@ -1,9 +1,9 @@
 // Copyright (c) 2017 PlanGrid, Inc.
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import 'styles/video.scss';
-import Loading from '../loading';
+import "styles/video.scss";
+import Loading from "../loading";
 
 class VideoViewer extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class VideoViewer extends Component {
   }
 
   render() {
-    const visibility = this.state.loading ? 'hidden' : 'visible';
+    const visibility = this.state.loading ? "hidden" : "visible";
     return (
       <div className="pg-driver-view">
         <div className="video-container">
@@ -34,7 +34,7 @@ class VideoViewer extends Component {
             style={{ visibility }}
             controls
             type={`video/${this.props.fileType}`}
-            onCanPlay={e => this.onCanPlay(e)}
+            onCanPlay={(e) => this.onCanPlay(e)}
             src={this.props.filePath}
           >
             Video playback is not supported by your browser.

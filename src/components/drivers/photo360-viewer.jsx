@@ -1,8 +1,8 @@
 // Copyright (c) 2017 PlanGrid, Inc.
 
-import React, { Component } from 'react';
-import * as THREE from 'three';
-import 'styles/photo360.scss';
+import React, { Component } from "react";
+import * as THREE from "three";
+import "styles/photo360.scss";
 
 export default class extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    const el = document.getElementById('360-photo');
+    const el = document.getElementById("360-photo");
     const positionInfo = el.getBoundingClientRect();
     const height = positionInfo.height;
     const width = positionInfo.width;
@@ -89,15 +89,20 @@ export default class extends Component {
     });
   }
 
-
   updateView() {
     const latitude = Math.max(-85, Math.min(85, this.state.latitude));
 
     // moving the camera according to current latitude (vertical movement)
     // and longitude (horizontal movement)
-    this.camera.target.x = 500 * Math.sin(THREE.Math.degToRad(90 - latitude)) * Math.cos(THREE.Math.degToRad(this.state.longitude));
+    this.camera.target.x =
+      500 *
+      Math.sin(THREE.Math.degToRad(90 - latitude)) *
+      Math.cos(THREE.Math.degToRad(this.state.longitude));
     this.camera.target.y = 500 * Math.cos(THREE.Math.degToRad(90 - latitude));
-    this.camera.target.z = 500 * Math.sin(THREE.Math.degToRad(90 - latitude)) * Math.sin(THREE.Math.degToRad(this.state.longitude));
+    this.camera.target.z =
+      500 *
+      Math.sin(THREE.Math.degToRad(90 - latitude)) *
+      Math.sin(THREE.Math.degToRad(this.state.longitude));
     this.camera.lookAt(this.camera.target);
 
     this.renderer.render(this.scene, this.camera);

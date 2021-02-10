@@ -25,6 +25,7 @@ class XlxsViewer extends Component {
     });
     const names = workbook.SheetNames;
     const sheets = names.map((name) => {
+      console.log(name);
       const sheet = XLSX.utils.sheet_to_html(workbook.Sheets[name]);
       return parser.parseFromString(sheet, "text/html").body.innerHTML;
     });
