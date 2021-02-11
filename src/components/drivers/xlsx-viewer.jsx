@@ -31,7 +31,7 @@ class XlxsViewer extends Component {
 
       keys.forEach((key) => {
         const cellData = currentSheet[key];
-        if (cellData.t === "d" && cellData.w.match(/\d{2}\//g)) {
+        if (cellData.t === "d" && /^\d{2}\/\d{2}\/\d{2}$/g.test(cellData.w)) {
           cellData.w = formatDate(cellData.w);
         }
       });
