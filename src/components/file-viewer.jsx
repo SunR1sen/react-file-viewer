@@ -16,16 +16,19 @@ import {
   AudioViewer,
 } from "./drivers";
 
+import AcceptableExtensions from "../utils/formats";
+
 class FileViewer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
     };
+    this.containerRef = React.createRef();
   }
 
   componentDidMount() {
-    const container = document.getElementById("pg-viewer");
+    const container = this.containerRef.current;
     const height = container ? container.clientHeight : 0;
     const width = container ? container.clientWidth : 0;
     this.setState({ height, width });
@@ -72,7 +75,7 @@ class FileViewer extends Component {
     const Driver = this.getDriver(this.props);
     return (
       <div className="pg-viewer-wrapper">
-        <div className="pg-viewer" id="pg-viewer">
+        <div className="pg-viewer" id="pg-viewer" ref={this.containerRef}>
           <Driver
             {...this.props}
             width={this.state.width}
@@ -83,6 +86,8 @@ class FileViewer extends Component {
     );
   }
 }
+
+FileViewer.AcceptableExtensions = AcceptableExtensions;
 
 FileViewer.propTypes = {
   fileType: PropTypes.string.isRequired,
