@@ -4,6 +4,7 @@
   "description": "Extendable file viewer for web",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "types": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SunR1sen/react-file-viewer.git"
@@ -26,6 +27,19 @@
     {
       "name": "Ivan Bobrenko",
       "email": "i.bobrenko@onlystudio.org"
+    },
+    {
+      "name": "Alexei Schiopu",
+      "email": "alexxschiopu@gmail.com",
+      "url": "http://schiopu.me"
+    },
+    {
+      "name": "Aaron Norby",
+      "email": "aaron.norby@gmail.com"
+    },
+    {
+      "name": "Viktoriya Savkina",
+      "email": "viktoriya.savkina@gmail.com"
     }
   ],
   "license": "MIT",
