@@ -9,6 +9,7 @@
     "type": "git",
     "url": "git+https://github.com/SunR1sen/react-file-viewer.git"
   },
+  "files": ["dist/", "index.d.ts"],
   "scripts": {
     "dev": "webpack -d --watch",
     "build": "webpack -p --progress",
