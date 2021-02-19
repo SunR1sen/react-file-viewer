@@ -1,6 +1,4 @@
-import { format, parse } from "date-fns";
+import { format } from "date-fns";
 
-export const formatDate = (date, schema = "dd/MM/yy") => {
-  const newDate = parse(date, schema, new Date());
-  return format(newDate, "dd.MM.yy");
-};
+export const formatDate = (date, schema = "dd.MM.yyyy") => format(date, schema);
+

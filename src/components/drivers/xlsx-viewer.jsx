@@ -23,16 +23,28 @@ class XlxsViewer extends Component {
     const workbook = XLSX.read(arr.join(""), {
       type: "binary",
       cellDates: true,
+      dateNF: 14,
     });
     const names = workbook.SheetNames;
     const sheets = names.map((name) => {
       const currentSheet = workbook.Sheets[name];
       const keys = Object.keys(currentSheet);
+      const timeRegexp = /:/;
+      const dateRegexp = /\d{2}\/\d{2}\/\d{2,4}/g;
 
       keys.forEach((key) => {
         const cellData = currentSheet[key];
-        if (cellData.t === "d" && /^\d{2}\/\d{2}\/\d{2}$/g.test(cellData.w)) {
-          cellData.w = formatDate(cellData.w);
+
+        if (cellData.t === "d" && /^\d{2}\/\d{2}\/\d{2,4}$/g.test(cellData.w)) {
+          cellData.w = formatDate(cellData.v);
+        } else if (
+          cellData.t === "d" &&
+          dateRegexp.test(cellData.w) &&
+          timeRegexp.test(cellData.w)
+        ) {
+          cellData.w = formatDate(cellData.v, "dd.MM.yyyy HH:mm");
+        } else if (cellData.t === "d" && timeRegexp.test(cellData.w)) {
+          cellData.w = formatDate(cellData.v, "HH:mm:ss");
         }
       });
 
