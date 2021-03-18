@@ -1,9 +1,9 @@
 // Copyright (c) 2017 PlanGrid, Inc.
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Error from './error';
-import Loading from './loading';
+import Error from "./error";
+import Loading from "./loading";
 
 function withFetching(WrappedComponent, props) {
   return class extends Component {
@@ -20,7 +20,7 @@ function withFetching(WrappedComponent, props) {
         if (this.props.onError) {
           this.props.onError(e);
         }
-        this.setState({ error: 'fetch error' });
+        this.setState({ error: "fetch error" });
       }
     }
 
@@ -31,13 +31,13 @@ function withFetching(WrappedComponent, props) {
     createRequest(path) {
       let xhr = new XMLHttpRequest();
 
-      if ('withCredentials' in xhr) {
+      if ("withCredentials" in xhr) {
         // XHR for Chrome/Firefox/Opera/Safari.
-        xhr.open('GET', path, true);
-      } else if (typeof XDomainRequest !== 'undefined') {
+        xhr.open("GET", path, true);
+      } else if (typeof XDomainRequest !== "undefined") {
         // XDomainRequest for IE.
         xhr = new XDomainRequest();
-        xhr.open('GET', path);
+        xhr.open("GET", path);
       } else {
         // CORS not supported.
         xhr = null;
