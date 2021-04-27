@@ -33,7 +33,7 @@ class AudioViewer extends Component {
           <audio
             style={{ visibility }}
             controls
-            onCanPlay={(e) => this.onCanPlay(e)}
+            onCanPlay={e => this.onCanPlay(e)}
             src={this.props.filePath}
           >
             Video playback is not supported by your browser.

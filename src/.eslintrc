@@ -20,7 +20,9 @@
     "arrow-parens": "warn",
     "curly": "warn",
     "import/prefer-default-export": "off",
-    "no-debugger": "off"
+    "no-debugger": "off",
+    "no-unused-vars": "warn",
+    "no-unused-expressions": "warn"
   },
   "extends": "airbnb",
   "globals": {

@@ -1,13 +1,16 @@
 // Copyright (c) 2017 PlanGrid, Inc.
 
 import React from "react";
+import { ZoomInOutlined, ZoomOutOutlined, UndoOutlined } from "@ant-design/icons";
 import VisibilitySensor from "react-visibility-sensor";
 import { PDFJS } from "pdfjs-dist/build/pdf.combined";
+import "antd/dist/antd.min.css";
 import "pdfjs-dist/web/compatibility";
+import "./../../styles/pdf-viewer.scss";
 
 PDFJS.disableWorker = true;
-const INCREASE_PERCENTAGE = 0.2;
-const DEFAULT_SCALE = 1.1;
+const INCREASE_PERCENTAGE = 0.1;
+const DEFAULT_SCALE = 1.9;
 
 export class PDFPage extends React.Component {
   constructor(props) {
@@ -32,8 +35,7 @@ export class PDFPage extends React.Component {
     if (
       prevState.isVisible === this.state.isVisible &&
       prevProps.zoom === this.props.zoom
-    )
-      return;
+    ) { return; }
     if (this.state.isVisible) this.fetchAndRenderPage();
   }
 
@@ -71,14 +73,14 @@ export class PDFPage extends React.Component {
       <div key={`page-${index}`} className="pdf-canvas">
         {this.props.disableVisibilityCheck ? (
           <canvas
-            ref={(node) => (this.canvas = node)}
+            ref={node => (this.canvas = node)}
             width="670"
             height="870"
           />
         ) : (
           <VisibilitySensor onChange={this.onChange} partialVisibility>
             <canvas
-              ref={(node) => (this.canvas = node)}
+              ref={node => (this.canvas = node)}
               width="670"
               height="870"
             />
@@ -111,7 +113,7 @@ export default class PDFDriver extends React.Component {
       filePath,
       null,
       null,
-      this.progressCallback.bind(this)
+      this.progressCallback.bind(this),
     ).then((pdf) => {
       this.setState({ pdf, containerWidth });
     });
@@ -164,17 +166,11 @@ export default class PDFDriver extends React.Component {
   render() {
     return (
       <div className="pdf-viewer-container">
-        <div className="pdf-viewer" ref={(node) => (this.container = node)}>
-          <div className="pdf-controlls-container">
-            <div className="view-control" onClick={this.increaseZoom}>
-              <i className="zoom-in" />
-            </div>
-            <div className="view-control" onClick={this.resetZoom}>
-              <i className="zoom-reset" />
-            </div>
-            <div className="view-control" onClick={this.reduceZoom}>
-              <i className="zoom-out" />
-            </div>
+        <div className="pdf-viewer" ref={node => (this.container = node)}>
+          <div className="pdf-controls-container">
+            <ZoomInOutlined className="view-control" onClick={this.increaseZoom} />
+            <UndoOutlined className="view-control" onClick={this.resetZoom} />
+            <ZoomOutOutlined className="view-control" onClick={this.reduceZoom} />
           </div>
           {this.renderLoading()}
           {this.renderPages()}

@@ -1,0 +1,14 @@
+.pdf-controls-container {
+  display: flex;
+  box-sizing: border-box;
+
+  .anticon {
+    padding: 10px;
+  }
+}
+
+.pdf-viewer {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}

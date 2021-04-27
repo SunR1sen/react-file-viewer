@@ -10,10 +10,10 @@ import {
   VideoViewer,
   XlsxViewer,
   XBimViewer,
-  PDFViewer,
   UnsupportedViewer,
   PhotoViewerWrapper,
   AudioViewer,
+  PdfViewer,
 } from "./drivers";
 
 import AcceptableExtensions from "../utils/formats";
@@ -50,7 +50,7 @@ class FileViewer extends Component {
         return PhotoViewerWrapper;
       }
       case "pdf": {
-        return PDFViewer;
+        return PdfViewer;
       }
       case "docx": {
         return DocxViewer;
